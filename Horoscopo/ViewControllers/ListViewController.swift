@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource {
+class ListViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -29,6 +29,13 @@ class ViewController: UIViewController, UITableViewDataSource {
         cell.render(with: horoscope)
         
         return cell
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let detailVC = segue.destination as! DetailViewController
+        let indexPath = tableView.indexPathForSelectedRow!
+        let horoscope = Horoscope.horoscopeList[indexPath.row]
+        detailVC.horoscope = horoscope
+        tableView.deselectRow(at: indexPath, animated: false)
     }
 }
 
