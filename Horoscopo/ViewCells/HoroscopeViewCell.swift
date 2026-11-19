@@ -12,7 +12,9 @@ class HoroscopeViewCell: UITableViewCell {
     @IBOutlet weak var signImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var datesLabel: UILabel!
+    @IBOutlet weak var favoriteImageView: UIImageView!
     
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -28,6 +30,7 @@ class HoroscopeViewCell: UITableViewCell {
         signImageView.image = horoscope.sign
         nameLabel.text = horoscope.name
         datesLabel.text = horoscope.dates
+        favoriteImageView.isHidden = !SessionManager().isFavorite(id: horoscope.id)
     }
 
 }

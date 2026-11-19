@@ -33,23 +33,29 @@
                                                     <color key="tintColor" systemColor="labelColor"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Horoscope Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4A-mf-kHu">
-                                                    <rect key="frame" x="87" y="20" width="299" height="21"/>
+                                                    <rect key="frame" x="87" y="22" width="223" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Horoscope dates" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G0d-xf-z12">
-                                                    <rect key="frame" x="87" y="49" width="299" height="21"/>
+                                                    <rect key="frame" x="87" y="51" width="223" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" systemColor="secondaryLabelColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="heart.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="eHD-wH-nOG">
+                                                    <rect key="frame" x="342" y="24" width="44" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                    <color key="tintColor" systemColor="systemRedColor"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="datesLabel" destination="G0d-xf-z12" id="dDK-eY-gxD"/>
+                                            <outlet property="favoriteImageView" destination="eHD-wH-nOG" id="3Z9-Yo-RiJ"/>
                                             <outlet property="nameLabel" destination="h4A-mf-kHu" id="EAQ-sN-OcB"/>
                                             <outlet property="signImageView" destination="BZm-fZ-NnH" id="ljs-c5-ooX"/>
                                             <segue destination="les-QW-y6a" kind="show" id="z4K-XV-sa2"/>
@@ -83,10 +89,56 @@
                     <view key="view" contentMode="scaleToFill" id="Gej-kX-gzj">
                         <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bJ5-1k-0Zn" userLabel="Content View">
+                                <rect key="frame" x="0.0" y="116" width="402" height="724"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3cO-K6-NMo">
+                                        <rect key="frame" x="111" y="8" width="180" height="180"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hdv-VX-E3L">
+                                <rect key="frame" x="0.0" y="97" width="402" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items/>
+                            </toolbar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3c5-Ru-rOH">
+                                <rect key="frame" x="0.0" y="97" width="402" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items/>
+                            </toolbar>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="s6g-nU-itP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="bJ5-1k-0Zn" firstAttribute="bottom" secondItem="s6g-nU-itP" secondAttribute="bottom" id="3l2-zI-iBf"/>
+                            <constraint firstItem="bJ5-1k-0Zn" firstAttribute="leading" secondItem="s6g-nU-itP" secondAttribute="leading" id="W0I-FS-Uav"/>
+                            <constraint firstItem="bJ5-1k-0Zn" firstAttribute="top" secondItem="s6g-nU-itP" secondAttribute="top" id="epE-Uv-iOY"/>
+                            <constraint firstItem="bJ5-1k-0Zn" firstAttribute="trailing" secondItem="s6g-nU-itP" secondAttribute="trailing" id="wFx-zo-EPy"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Detail" id="6e8-wf-h4d"/>
+                    <navigationItem key="navigationItem" title="Detail" largeTitleDisplayMode="never" id="6e8-wf-h4d">
+                        <rightBarButtonItems>
+                            <barButtonItem title="Favorite" image="heart.fill" catalog="system" id="sdv-da-JMX">
+                                <color key="tintColor" systemColor="systemPinkColor"/>
+                                <connections>
+                                    <action selector="favoriteMenuClicked:" destination="les-QW-y6a" id="dGw-Kb-hLO"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Share" image="square.and.arrow.up.fill" catalog="system" id="x5V-k6-gKJ">
+                                <connections>
+                                    <action selector="shareMenuClicked:" destination="les-QW-y6a" id="0Tu-1N-8Bb"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="favoriteMenuItem" destination="sdv-da-JMX" id="Tcr-zF-vSQ"/>
+                        <outlet property="signImageView" destination="3cO-K6-NMo" id="cu6-PJ-ISs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oDp-T2-6sO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -97,8 +149,8 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="T8Y-oU-W2k" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sNb-ju-A9Q">
-                        <rect key="frame" x="0.0" y="62" width="402" height="54"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="sNb-ju-A9Q">
+                        <rect key="frame" x="0.0" y="62" width="402" height="106"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -113,6 +165,8 @@
     </scenes>
     <resources>
         <image name="aries-icon" width="800" height="800"/>
+        <image name="heart.fill" catalog="system" width="128" height="111"/>
+        <image name="square.and.arrow.up.fill" catalog="system" width="114" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
@@ -121,6 +175,12 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.21960784310000001" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

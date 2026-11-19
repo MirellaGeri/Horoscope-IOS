@@ -8,21 +8,60 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-    
+    // MARK: - Declaraciones
     var horoscope : Horoscope!
+    var isFavorite = false
+    // MARK: - Outlets
+    @IBOutlet weak var favoriteMenuItem: UIBarButtonItem!
+    @IBOutlet weak var signImageView: UIImageView!
     
+    // MARK: - DataVisual
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         navigationItem.title = horoscope.name
         navigationItem.subtitle = horoscope.dates
-        
+        signImageView.image = horoscope.sign
+        isFavorite = SessionManager().isFavorite(id: horoscope.id)
+        setFavoriteIcon()
+    }
+    // MARK: - Buttons
+    @IBAction func favoriteMenuClicked(_ sender: Any) {
+        let session =  SessionManager()
+        if(isFavorite){
+            session.setFavorite(id: "")
+        }else{
+            session.setFavorite(id: horoscope.id)
+        }
+        isFavorite = !isFavorite
+        setFavoriteIcon()
     }
     
-
+    @IBAction func shareMenuClicked(_ sender: Any) {
+        let text = "This is your horoscope"
+        let textToShare = [text]
+        let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
+        
+        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+        
+        self.present(activityViewController, animated: true, completion: nil)
+    }
+    
+    // MARK: - Funciones
+    func setFavoriteIcon(){
+        if isFavorite{
+            favoriteMenuItem.image = UIImage(systemName: "heart.fill")
+        }else{
+            favoriteMenuItem.image = UIImage(systemName: "heart")
+        }
+    }
+    
+    
+    
+    
+    
+    
     /*
-    // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.

@@ -25,6 +25,19 @@ class ListViewController: UIViewController, UITableViewDataSource, UISearchBarDe
         tableView.dataSource = self
         
     }
+    /*
+    override func viewDidAppear(_ animated: Bool) {
+        //EL efecto es ver que hay un cambio como un saltito
+        super.viewDidAppear(animated)
+        tableView.reloadData()
+    }*/
+    
+    override func viewWillAppear(_ animated: Bool) {
+        //EL efecto es que ya se cambio y solo visualizas el cambio ya hecho sin ver el saltito
+        super.viewDidAppear(animated)
+        tableView.reloadData()
+    }
+    
     // MARK: - DataSource TableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //Tienen tanta filas como horoscopos haya no usaremos secciones
@@ -37,7 +50,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UISearchBarDe
         return cell
     }
     // MARK: - Delegate SearchBar
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    /*func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let query = searchBar.text ?? ""
         horoscopeList = Horoscope.horoscopeList.filter{ it in
             //si no le pones el it o cualquier como lo llames puedes colocarlo sin nada y llamar a cada uno com   $0
@@ -45,7 +58,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UISearchBarDe
             it.dates.lowercased().contains(query.lowercased())
         }
         tableView.reloadData()
-    }
+    }*/
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty{
             horoscopeList = Horoscope.horoscopeList
