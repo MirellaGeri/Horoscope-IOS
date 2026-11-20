@@ -3,6 +3,7 @@
     <device id="retina6_3" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="25407"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,7 +19,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="b7C-FJ-Bmm">
                                 <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="MysticBackground"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Horoscope Cell" rowHeight="90" id="ypm-Jx-LBz" customClass="HoroscopeViewCell" customModule="Horoscopo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="402" height="90"/>
@@ -27,6 +28,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="402" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x4E-68-NgN" userLabel="CardView">
+                                                    <rect key="frame" x="16" y="8" width="370" height="74"/>
+                                                    <color key="backgroundColor" name="MysticCard"/>
+                                                </view>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="aries-icon" translatesAutoresizingMaskIntoConstraints="NO" id="BZm-fZ-NnH">
                                                     <rect key="frame" x="16" y="13" width="63" height="65"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -47,13 +52,21 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="heart.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="eHD-wH-nOG">
-                                                    <rect key="frame" x="342" y="24" width="44" height="44"/>
+                                                    <rect key="frame" x="342" y="24" width="34" height="34"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                    <color key="tintColor" systemColor="systemRedColor"/>
+                                                    <color key="tintColor" name="Favorite"/>
                                                 </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="x4E-68-NgN" secondAttribute="trailing" constant="16" id="1I9-jf-k6j"/>
+                                                <constraint firstItem="x4E-68-NgN" firstAttribute="leading" secondItem="gsH-Bc-U8J" secondAttribute="leading" constant="16" id="95X-sQ-JSY"/>
+                                                <constraint firstItem="x4E-68-NgN" firstAttribute="top" secondItem="gsH-Bc-U8J" secondAttribute="top" constant="8" id="cdS-3M-bEb"/>
+                                                <constraint firstAttribute="bottom" secondItem="x4E-68-NgN" secondAttribute="bottom" constant="8" id="yvF-fB-3a1"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" name="MysticBackground"/>
                                         <connections>
+                                            <outlet property="cardView" destination="x4E-68-NgN" id="Ff8-ri-JWD"/>
                                             <outlet property="datesLabel" destination="G0d-xf-z12" id="dDK-eY-gxD"/>
                                             <outlet property="favoriteImageView" destination="eHD-wH-nOG" id="3Z9-Yo-RiJ"/>
                                             <outlet property="nameLabel" destination="h4A-mf-kHu" id="EAQ-sN-OcB"/>
@@ -65,7 +78,6 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="b7C-FJ-Bmm" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="PN9-PN-VMe"/>
                             <constraint firstAttribute="trailing" secondItem="b7C-FJ-Bmm" secondAttribute="trailing" id="X5l-jr-rBu"/>
@@ -93,12 +105,45 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bJ5-1k-0Zn" userLabel="Content View">
                                 <rect key="frame" x="0.0" y="116" width="402" height="724"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3cO-K6-NMo">
-                                        <rect key="frame" x="111" y="8" width="180" height="180"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="aries-icon" translatesAutoresizingMaskIntoConstraints="NO" id="B8G-tU-Uuc">
+                                        <rect key="frame" x="108" y="6" width="184" height="184"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" name="MysticPurple"/>
                                     </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="aries-icon" translatesAutoresizingMaskIntoConstraints="NO" id="3cO-K6-NMo">
+                                        <rect key="frame" x="110" y="8" width="180" height="180"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" name="MysticGold"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Horoscope Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAw-df-e1I">
+                                        <rect key="frame" x="8" y="196" width="386" height="27"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                        <color key="textColor" name="MysticGold"/>
+                                        <nil key="highlightedColor"/>
+                                        <color key="shadowColor" name="MysticPurple"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Horoscope dates" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1A7-Um-2QU">
+                                        <rect key="frame" x="8" y="231" width="386" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="MysticGold"/>
+                                        <nil key="highlightedColor"/>
+                                        <color key="shadowColor" name="MysticPurple"/>
+                                    </label>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="EI2-9p-QB0">
+                                        <rect key="frame" x="7" y="270" width="386" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <segments>
+                                            <segment title="" image="calendar.day" catalog="system"/>
+                                            <segment title="" image="rectangle.split.3x1" catalog="system"/>
+                                            <segment title="" image="calendar" catalog="system"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="buttonNavigationCalendar:" destination="les-QW-y6a" eventType="valueChanged" id="hCO-im-BAi"/>
+                                        </connections>
+                                    </segmentedControl>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hdv-VX-E3L">
                                 <rect key="frame" x="0.0" y="97" width="402" height="44"/>
@@ -112,7 +157,7 @@
                             </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="s6g-nU-itP"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="MysticBackground"/>
                         <constraints>
                             <constraint firstItem="bJ5-1k-0Zn" firstAttribute="bottom" secondItem="s6g-nU-itP" secondAttribute="bottom" id="3l2-zI-iBf"/>
                             <constraint firstItem="bJ5-1k-0Zn" firstAttribute="leading" secondItem="s6g-nU-itP" secondAttribute="leading" id="W0I-FS-Uav"/>
@@ -123,7 +168,7 @@
                     <navigationItem key="navigationItem" title="Detail" largeTitleDisplayMode="never" id="6e8-wf-h4d">
                         <rightBarButtonItems>
                             <barButtonItem title="Favorite" image="heart.fill" catalog="system" id="sdv-da-JMX">
-                                <color key="tintColor" systemColor="systemPinkColor"/>
+                                <color key="tintColor" name="Favorite"/>
                                 <connections>
                                     <action selector="favoriteMenuClicked:" destination="les-QW-y6a" id="dGw-Kb-hLO"/>
                                 </connections>
@@ -136,7 +181,10 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="datesHoroscopeLabel" destination="1A7-Um-2QU" id="KK1-ir-TFo"/>
                         <outlet property="favoriteMenuItem" destination="sdv-da-JMX" id="Tcr-zF-vSQ"/>
+                        <outlet property="nameHoroscopeLabel" destination="ZAw-df-e1I" id="Nj7-aR-WeL"/>
+                        <outlet property="shadowImageView" destination="B8G-tU-Uuc" id="nIO-fR-T1z"/>
                         <outlet property="signImageView" destination="3cO-K6-NMo" id="cu6-PJ-ISs"/>
                     </connections>
                 </viewController>
@@ -152,6 +200,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="sNb-ju-A9Q">
                         <rect key="frame" x="0.0" y="62" width="402" height="106"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" name="MysticGold"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -165,22 +216,31 @@
     </scenes>
     <resources>
         <image name="aries-icon" width="800" height="800"/>
+        <image name="calendar" catalog="system" width="128" height="111"/>
+        <image name="calendar.day" catalog="system" width="128" height="111"/>
         <image name="heart.fill" catalog="system" width="128" height="111"/>
+        <image name="rectangle.split.3x1" catalog="system" width="128" height="97"/>
         <image name="square.and.arrow.up.fill" catalog="system" width="114" height="128"/>
+        <namedColor name="Favorite">
+            <color red="0.3345566987991333" green="0.072868764400482178" blue="0.33468323945999146" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MysticBackground">
+            <color red="0.7138671875" green="0.6469726562" blue="0.7880859375" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="MysticCard">
+            <color red="0.8315429688" green="0.7841796875" blue="0.9018554688" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="MysticGold">
+            <color red="0.3332519531" green="0.074523933230000006" blue="0.3332519531" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="MysticPurple">
+            <color red="0.1254882812" green="0.1058959961" blue="0.1999511719" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemPinkColor">
-            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.21960784310000001" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -14,14 +14,21 @@ class DetailViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var favoriteMenuItem: UIBarButtonItem!
     @IBOutlet weak var signImageView: UIImageView!
+    @IBOutlet weak var nameHoroscopeLabel: UILabel!
+    @IBOutlet weak var datesHoroscopeLabel: UILabel!
+    @IBOutlet weak var shadowImageView: UIImageView!
     
-    // MARK: - DataVisual
+    // MARK: - lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         navigationItem.title = horoscope.name
         navigationItem.subtitle = horoscope.dates
         signImageView.image = horoscope.sign
+        shadowImageView.image = horoscope.sign
+        nameHoroscopeLabel.text = horoscope.name
+        datesHoroscopeLabel.text = horoscope.dates
+    
         isFavorite = SessionManager().isFavorite(id: horoscope.id)
         setFavoriteIcon()
     }
@@ -35,6 +42,8 @@ class DetailViewController: UIViewController {
         }
         isFavorite = !isFavorite
         setFavoriteIcon()
+    }
+    @IBAction func buttonNavigationCalendar(_ sender: UISegmentedControl) {
     }
     
     @IBAction func shareMenuClicked(_ sender: Any) {

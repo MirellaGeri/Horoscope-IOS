@@ -13,11 +13,18 @@ class HoroscopeViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var datesLabel: UILabel!
     @IBOutlet weak var favoriteImageView: UIImageView!
+    @IBOutlet weak var cardView: UIView!
     
-
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        cardView.layer.cornerRadius = 15
+        //cardView.clipsToBounds = true
+        cardView.layer.shadowColor = UIColor.black.cgColor
+        cardView.layer.shadowOpacity = 0.8
+        cardView.layer.shadowOffset = CGSize(width: 0, height: 8)
+        cardView.layer.shadowRadius = 10
+        cardView.layer.masksToBounds = false
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
